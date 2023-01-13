@@ -5,12 +5,6 @@ namespace CatalogFootballPlayers3.Models
 {
     public class Footballer
     {
-        public enum Gender
-        {
-            Man,
-            Woman
-        }
-
         public enum Countries
         {
             Russia,
@@ -25,7 +19,7 @@ namespace CatalogFootballPlayers3.Models
 
         public string Surname { get; set; }
 
-        public Gender GenderFootballer { get; set; }
+        public string Gender { get; set; }
 
         public DateTime Birthday { get; set; }
 
