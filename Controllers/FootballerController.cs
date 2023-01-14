@@ -26,5 +26,19 @@ namespace CatalogFootballPlayers3.Controllers
 		{
 			return View();
 		}
+
+        //POST - CREATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+		public IActionResult Create(Footballer obj)
+		{
+            if (ModelState.IsValid)
+            {
+                _db.Footballer.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+		}
 	}
 }
