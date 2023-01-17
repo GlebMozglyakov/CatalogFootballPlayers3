@@ -1,0 +1,106 @@
+﻿@model CatalogFootballPlayers3.Models.Footballer
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Измените данные для редактирования футболиста</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Surname"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Surname" class="form-control" />
+                        <span asp-validation-for="Surname" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Gender"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Gender" type="radio" value="Мужской" />
+                        <span>Мужской</span> <br />
+                        <input asp-for="Gender" type="radio" value="Женский" />
+                        <span>Женский</span> <br />
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Birthday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Birthday" type="date"
+                               min="1950-01-01" max="2004-12-31">
+                        <span asp-validation-for="Birthday" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="TeamName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TeamName" class="form-control" />
+                        <span asp-validation-for="TeamName" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Country"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Country">
+                            <option value="Россия">Россия</option>
+                            <option value="США">США</option>
+                            <option value="Италия">Италия</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Сохранить изменения" />
+                        </div>
+                        <div class="col">
+                            <a asp-controller="Footballer" asp-action="Index" class="btn btn-primary">К списку футболистов</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
+

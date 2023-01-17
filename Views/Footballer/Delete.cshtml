@@ -1,0 +1,101 @@
+﻿@model CatalogFootballPlayers3.Models.Footballer
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Удалить футболиста</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" disable class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Surname"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Surname" disable class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Gender"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Gender" type="radio" value="Мужской" />
+                        <span>Мужской</span> <br />
+                        <input asp-for="Gender" disable type="radio" value="Женский" />
+                        <span>Женский</span> <br />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Birthday"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Birthday" disable type="date"
+                               min="1950-01-01" max="2004-12-31">
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="TeamName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TeamName" disable class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Country"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Country">
+                            <option value="Россия">Россия</option>
+                            <option value="США">США</option>
+                            <option value="Италия">Италия</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-danger w-100" value="Удалить" />
+                        </div>
+                        <div class="col">
+                            <a asp-controller="Footballer" asp-action="Index" class="btn btn-primary">К списку футболистов</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
+
