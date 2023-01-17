@@ -1,4 +1,4 @@
-﻿@model CatalogFootballPlayers3.Models.Footballer
+﻿@model CatalogFootballPlayers3.Models.ViewModels.FootballerVM
 
 <form method="post" asp-action="Create">
     <div class="border p-3">
@@ -10,64 +10,70 @@
             <div class="col-8">
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Name"></label>
+                        <label asp-for="Footballer.Name"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="Footballer.Name" class="form-control" />
+                        <span asp-validation-for="Footballer.Name" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Surname"></label>
+                        <label asp-for="Footballer.Surname"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Surname" class="form-control" />
-                        <span asp-validation-for="Surname" class="text-danger"></span>
+                        <input asp-for="Footballer.Surname" class="form-control" />
+                        <span asp-validation-for="Footballer.Surname" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Gender"></label>
+                        <label asp-for="Footballer.Gender"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Gender" type="radio" value="Мужской" />
+                        <input asp-for="Footballer.Gender" type="radio" value="Мужской" />
                         <span>Мужской</span> <br />
-                        <input asp-for="Gender" type="radio" value="Женский" />
+                        <input asp-for="Footballer.Gender" type="radio" value="Женский" />
                         <span>Женский</span> <br />
-                        <span asp-validation-for="Gender" class="text-danger"></span>
+                        <span asp-validation-for="Footballer.Gender" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Birthday"></label>
+                        <label asp-for="Footballer.Birthday"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="Birthday" type="date"
+                        <input asp-for="Footballer.Birthday" type="date"
                                min="1950-01-01" max="2004-12-31">
-                        <span asp-validation-for="Birthday" class="text-danger"></span>
+                        <span asp-validation-for="Footballer.Birthday" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="TeamName"></label>
+                        <label asp-for="Footballer.TeamName"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="TeamName" class="form-control" />
-                        <span asp-validation-for="TeamName" class="text-danger"></span>
+                        @*<input asp-for="Footballer.TeamName" class="form-control" />*@
+                        <input asp-for="Footballer.TeamName" list="var" />
+                        <datalist id="var">
+                        <select asp-for="Footballer.TeamName" asp-items="@Model.FootballerSelectList" class="form-control">
+
+                        </select>
+                        </datalist>
+                        <span asp-validation-for="Footballer.TeamName" class="text-danger"></span>
                     </div>
 
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="Country"></label>
+                        <label asp-for="Footballer.Country"></label>
                     </div>
                     <div class="col-8">
-                        <select asp-for="Country">
+                        <select asp-for="Footballer.Country">
                             <option value="Россия">Россия</option>
                             <option value="США">США</option>
                             <option value="Италия">Италия</option>

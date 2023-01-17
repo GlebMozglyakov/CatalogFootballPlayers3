@@ -1,8 +1,11 @@
 ﻿using CatalogFootballPlayers3.Data;
 using CatalogFootballPlayers3.Models;
+using CatalogFootballPlayers3.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CatalogFootballPlayers3.Controllers
 {
@@ -22,19 +25,40 @@ namespace CatalogFootballPlayers3.Controllers
         }
 
         //GET - CREATE
-		public IActionResult Create()
+		public IActionResult Create(int? id)
 		{
-			return View();
+            FootballerVM footballerVM = new FootballerVM()
+            {
+                Footballer = new Footballer(),
+                FootballerSelectList = _db.Footballer.Select(i => new SelectListItem
+                {
+                    Text = i.TeamName
+                })
+            };
+
+            if (id == null)
+            {
+                return View(footballerVM);
+            }
+            else
+            {
+                footballerVM.Footballer = _db.Footballer.Find(id);
+                if (footballerVM.Footballer == null)
+                {
+                    return NotFound();
+                }
+                return View(footballerVM);
+            }
 		}
 
         //POST - CREATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-		public IActionResult Create(Footballer obj)
+		public IActionResult Create(FootballerVM obj)
 		{
             if (ModelState.IsValid)
             {
-                _db.Footballer.Add(obj);
+                _db.Footballer.Add(obj.Footballer);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
