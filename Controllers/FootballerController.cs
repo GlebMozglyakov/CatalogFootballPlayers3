@@ -69,6 +69,17 @@ namespace CatalogFootballPlayers3.Controllers
 		//GET - EDIT
 		public IActionResult Edit(int? id)
 		{
+            FootballerVM footballerVM = new FootballerVM()
+            {
+                Footballer = new Footballer(),
+                FootballerSelectList = _db.Footballer.Select(i => new SelectListItem
+                {
+                    Text = i.TeamName
+                })
+            };
+
+            ViewBag.FootballerVM = footballerVM.FootballerSelectList;
+
             if (id == null || id == 0)
             {
                 return NotFound();

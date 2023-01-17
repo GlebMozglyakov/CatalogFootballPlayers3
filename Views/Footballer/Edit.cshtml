@@ -57,7 +57,12 @@
                         <label asp-for="TeamName"></label>
                     </div>
                     <div class="col-8">
-                        <input asp-for="TeamName" class="form-control" />
+                        @*<input asp-for="Footballer.TeamName" class="form-control" />*@
+                        <input asp-for="TeamName" list="var" />
+                        <datalist id="var">
+                            <select asp-for="TeamName" asp-items="@ViewBag.FootballerVM" class="form-control">
+                            </select>
+                        </datalist>
                         <span asp-validation-for="TeamName" class="text-danger"></span>
                     </div>
 
